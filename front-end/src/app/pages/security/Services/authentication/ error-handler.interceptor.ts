@@ -30,7 +30,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
                 this.authenticationService.logOut();
             }
 
-            const error = err.error.message || err.statusText;
+            const error = err.error ?  err.error.message : err.statusText;
 
             this.progressBarService.hideBar();
             this.messageService.add({severity: 'error', summary: 'خطا', detail: error});
