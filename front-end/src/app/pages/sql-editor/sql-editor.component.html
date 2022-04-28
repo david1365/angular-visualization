@@ -1,0 +1,48 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()" class="ca-sql-editor">
+    <p-toolbar>
+        <div class="p-toolbar-group-left">
+            <button pButton type="button" class="p-button-raised" label="۱" (click)="query1()"></button>
+            <button pButton type="button" class="p-button-raised" label="۲" (click)="query2()"></button>
+        </div>
+
+        <div class="p-toolbar-group-right">
+            <div class="demo-container p-p-0 p-p-sm-1 p-p-md-2 p-p-lg-3">
+                <button pButton type="submit" class="p-button-raised p-button-rounded" icon="pi pi-fw pi-play"
+                        [disabled]="!form.valid"></button>
+            </div>
+        </div>
+    </p-toolbar>
+
+    <div class="p-fluid">
+        <div class="p-field">
+            <ngx-codemirror formControlName="queryString" class="ca-codemirror"
+                            [options]="{ lineNumbers: true, theme: 'default',  mode: 'text/x-plsql'}"></ngx-codemirror>
+        </div>
+    </div>
+
+</form>
+
+<div class="ca-table-body">
+    <table class="ca-datatable p-datatable p-component">
+        <thead class="p-datatable-thead">
+        <tr class="ng-star-inserted">
+            <th *ngFor="let col of columnNames">
+                {{col.header}}
+            </th>
+        </tr>
+        </thead>
+        <tbody class="p-datatable-tbody">
+        <tr *ngFor="let row of data" class="ng-star-inserted">
+            <td *ngFor="let col of columnNames">
+                {{row[col.field]}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+

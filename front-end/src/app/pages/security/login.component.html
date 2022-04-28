@@ -1,0 +1,33 @@
+<div class="card ca-login-style">
+    <div class="p-fluid">
+
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+
+            <div class="p-field">
+                <label for="userName">نام کاربری</label>
+                <div class="p-inputgroup ca-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input id="userName" formControlName="userName" type="text" pInputText>
+                </div>
+            </div>
+
+            <div class="p-field">
+                <label for="password">کلمه ی عبور</label>
+                <div class="p-inputgroup ca-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                    <input id="password" formControlName="password" type="password" pInputText>
+                </div>
+            </div>
+            <p-divider></p-divider>
+            <div class="p-grid">
+                <div class="p-col">
+                </div>
+                <div class="p-col-4">
+                    <button pButton type="submit" class="p-button-raised p-button-rounded" [disabled]="!form.valid"
+                            label="ورود"></button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

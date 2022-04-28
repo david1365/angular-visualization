@@ -1,0 +1,131 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~codemirror/lib/codemirror';
+@import '~codemirror/theme/material';
+
+@font-face {
+    font-family: 'IranSans';
+    src: url("assets/fonts/IRANSansWeb.eot");
+    src: url("assets/fonts/IRANSansWeb.eot?#iefix") format('embedded-opentype');
+    src: url("assets/fonts/IRANSansWeb.woff2") format('woff2'), url("assets/fonts/IRANSansWeb.woff") format('woff'), url("assets/fonts/IRANSansWeb.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal
+}
+
+/*body*/
+body {
+    font-family: IranSans, sans-serif !important;
+    direction: rtl;
+    overflow: hidden;
+}
+
+body .p-component {
+    font-family: IranSans, sans-serif !important;
+    font-size: 0.86rem;
+}
+
+body .p-link {
+    font-family: IranSans, sans-serif !important;
+}
+
+body .p-autocomplete .p-autocomplete-multiple-container .p-autocomplete-input-token input {
+    font-family: Irsans, Irsansb, sans-serif !important;
+}
+
+
+/*angular*/
+.p-inputtext.ng-dirty.ng-invalid {
+    border-color: #ced4da;;
+    border-bottom-width: 3px;
+    border-bottom-color: #f44336;
+}
+
+.ca-unlimited-table-width table {
+    width: auto !important;
+}
+
+
+/*ca-logo*/
+.ca-logo {
+}
+
+/*ca-scrollpanel*/
+.ca-scrollpanel .p-scrollpanel-bar {
+    background: #a6d5fa;
+}
+
+
+/*ca-datatable*/
+.ca-datatable th {
+    white-space: nowrap;
+}
+
+.ca-datatable .p-datatable-thead > tr > th {
+    text-align: center !important;
+}
+
+.ca-datatable .p-datatable-tbody > tr > td {
+    text-align: right !important;
+}
+
+/*.ca-sidebar*/
+.ca-sidebar .pi-chevron-right:before {
+    content: "\e900";
+}
+
+.ca-sidebar .p-panelmenu-header > a .p-panelmenu-icon {
+    margin-left: 0.5rem;
+}
+
+.ca-sidebar .p-panelmenu-header > a .p-menuitem-icon {
+    margin-left: 0.5rem;
+    margin-right: 0rem;
+}
+
+.ca-sidebar .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-icon {
+    color: #6c757d;
+    margin-left: 0.5rem;
+    margin-right: 0rem;
+}
+
+
+/*ca-inputgroup*/
+.ca-inputgroup .p-inputgroup-addon:first-child {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.ca-inputgroup .p-inputgroup-addon {
+    border-left: 0px solid #ced4da !important;
+    border-right: 1px solid #ced4da;
+}
+
+.ca-inputgroup .p-inputgroup-addon:last-child, .p-inputgroup button:last-child, .p-inputgroup input:last-child {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+/*.ca-codemirror*/
+.ca-codemirror .CodeMirror {
+    height: unset !important;
+}
+
+/*ca-sql-editor*/
+.ca-sql-editor .p-toolbar {
+    padding: 5px !important;
+}
+
+/*ca-toast*/
+.ca-toast .p-toast-message .p-toast-message-content .p-toast-message-text {
+    margin: 0 1rem 0 0;
+}
+
+/*ca-progressbar*/
+.ca-progressbar .p-progressbar {
+    height: 0.2rem !important;
+}

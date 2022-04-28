@@ -1,0 +1,23 @@
+.ca-codemirror {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.ca-sql-editor {
+    border-radius: 5px;
+    padding: 2px;
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+
+.ca-table-body {
+    width: 100%;
+    height: calc(100% - 13vh);
+    padding: 5px;
+    overflow: auto;
+    margin-top: 14px;
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+
+:host ::ng-deep .p-button {
+    margin-left: .5rem;
+}

@@ -1,0 +1,24 @@
+<p-toast position="top-left" class="ca-toast"></p-toast>
+
+<p-progressBar *ngIf="show" mode="indeterminate" class="ca-progressbar"></p-progressBar>
+<p-toolbar>
+    <div class="p-toolbar-group-left">
+        <IMG class="ca-logo" src="assets/logo-min.png" *ngIf="!currentUser">
+        <p-button icon="pi pi-bars" (onClick)="showMenu()" *ngIf="currentUser"></p-button>
+    </div>
+
+    <div class="p-toolbar-group-right">
+        <IMG class="ca-logo" src="assets/logo-min.png" *ngIf="currentUser">
+    </div>
+</p-toolbar>
+
+<p-sidebar [(visible)]="display" position="right" class="ca-sidebar">
+    <p-panelMenu [model]="items" [style]="{'width':'100%'}"></p-panelMenu>
+</p-sidebar>
+
+<div class="inner-content">
+    <router-outlet></router-outlet>
+</div>
+
+
+
