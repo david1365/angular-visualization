@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {API_PREFIX} from "../../../../app.token.d";
 import {CurrentUser} from "../vo/current-user.vo";
+import {environment} from "../../../../../environments/environment";
 
 /**
  * @author Davood Akbari - 1399
@@ -14,46 +15,58 @@ import {CurrentUser} from "../vo/current-user.vo";
  */
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthenticationService {
-    private CURRENT_USER_KEY: string = 'CURRENT_USER_KEY';
-    private AUTH_URL: string = `${this.apiPrefix}/auth/login`;
+  private CURRENT_USER_KEY: string = 'CURRENT_USER_KEY';
+  private AUTH_URL: string = `${this.apiPrefix}/auth/login`;
 
-    private userSubject: BehaviorSubject<CurrentUser>;
-    public user: Observable<CurrentUser>;
+  private userSubject: BehaviorSubject<CurrentUser>;
+  public user: Observable<CurrentUser>;
 
-    constructor(@Inject(API_PREFIX) private apiPrefix: string, private httpClient: HttpClient, private router: Router) {
+  constructor(@Inject(API_PREFIX) private apiPrefix: string, private httpClient: HttpClient, private router: Router) {
 
-        this.userSubject = new BehaviorSubject<CurrentUser>(this.currentUser);
-        this.user = this.userSubject.asObservable();
+    this.userSubject = new BehaviorSubject<CurrentUser>(this.currentUser);
+    this.user = this.userSubject.asObservable();
 
-    }
+  }
 
-    get currentUser(): CurrentUser {
-        let currentUser: any = localStorage.getItem(this.CURRENT_USER_KEY);
+  get currentUser(): CurrentUser {
+    let currentUser: any = localStorage.getItem(this.CURRENT_USER_KEY);
 
-        return JSON.parse(currentUser);
-    }
+    return JSON.parse(currentUser);
+  }
 
-    authenticate(account: Account) {
-        this.httpClient.post<CurrentUser>(this.AUTH_URL, account).subscribe(currentUser => {
+  authenticate(account: Account) {
 
-            localStorage.setItem(this.CURRENT_USER_KEY, JSON.stringify(currentUser));
+    if (environment.production) {
 
-            this.router.navigate(['/dashboard']);
+      this.httpClient.post<CurrentUser>(this.AUTH_URL, account).subscribe(currentUser => {
 
-            // @ts-ignore
-            this.userSubject.next(currentUser);
+        localStorage.setItem(this.CURRENT_USER_KEY, JSON.stringify(currentUser));
 
-            // console.log(localStorage.getItem(this.CURRENT_USER_KEY));
-        });
-    }
+        this.router.navigate(['/dashboard']);
 
-    logOut() {
-        localStorage.removeItem(this.CURRENT_USER_KEY);
         // @ts-ignore
-        this.userSubject.next(null);
-        this.router.navigate(['/login']);
+        this.userSubject.next(CurrentUser);
+
+        // console.log(localStorage.getItem(this.CURRENT_USER_KEY));
+      });
+    } else {
+
+      this.router.navigate(['/dashboard']);
+
+      let currentUser: CurrentUser = new CurrentUser(new Account("david", ""), "12345");
+
+      // @ts-ignore
+      this.userSubject.next(CurrentUser);
     }
+  }
+
+  logOut() {
+    localStorage.removeItem(this.CURRENT_USER_KEY);
+    // @ts-ignore
+    this.userSubject.next(null);
+    this.router.navigate(['/login']);
+  }
 }
